@@ -16,46 +16,44 @@ const rowElements = document.querySelectorAll(".row")
 // Call this function from WITHIN your row elements loop. Then you will, in turn,
 // need to loop over the resulting cell elements. But where should this whole
 // NESTED LOOP go? Think through the user's experience: when should WHAT happen? 
-function getCellElements (currentRowElement) {
+function getCellElements(currentRowElement) {
     return currentRowElement.querySelectorAll(".cell")
 }
 
 
 // YOUR CODE GOES HERE
-replaceAllButton.addEventListener('click', function(){
-    const findInput = document.getElementById(".find-input");
-    const replaceInput = document.getElementById(".replace-input");
+replaceAllButton.addEventListener('click', function () {
+    const searchInput = findInput.value;
+    const replaceSearchTerm = replaceInput.value;
 
 
 
 
 
-for( let sectionIndex = 0; sectionIndex < rowElements.length; sectionIndex += 1){
-    const getCellElements = rowElements[sectionIndex];
-    //console.log('Section ' + sectionIndex);
-    
-    
-    for(let infoIndex = 0; infoIndex < getCellElements.length; infoIndex += 1){
-        const sectionItem = getCellElements[infoIndex];
-        //console.log(infoIndex + ': ' + sectionItem);
-    
-    if(getCellElements.includes(findInput)){
-        
-        getCellElements = document.getElementById(".cell").innerHTML;
-        findInput = document.getElementById(".find-input").innerHTML;
-        replaceInput = document.getElementById(".replace-input").innerHTML;
-        getCellElements.replace(findInput, replaceInput);
+    for (let sectionIndex = 0; sectionIndex < rowElements.length; sectionIndex += 1) {
+
+        let cellInfoElements = getCellElements (rowElements[sectionIndex]);
+        //console.log('Section ' + sectionIndex);
+
+
+        for (let infoIndex = 0; infoIndex < cellInfoElements.length; infoIndex += 1) {
+            const sectionItem = cellInfoElements[infoIndex];
+            //console.log(infoIndex + ': ' + sectionItem);
+
+            while (sectionItem.innerHTML.includes(searchInput)) {
+
+                sectionItem.innerHTML = sectionItem.innerHTML.replace(searchInput, replaceSearchTerm);
+
+            }
+
+        }
 
     }
-
-    }
-
-} 
 
 })
 
 
-    
+
 
 
 

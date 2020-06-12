@@ -5,12 +5,13 @@ const findInput = document.querySelector(".find-input")
 const replaceInput = document.querySelector(".replace-input")
 const replaceAllButton = document.querySelector(".replace-all-button")
 
+
 // The following variable holds your OUTER ARRAY of row elements.
 // Later you will need an OUTER LOOP to loop over the individual elements within
 // this array.
 const rowElements = document.querySelectorAll(".row")
 
-// When you call the function belwo, it will get and return an INNER ARRAY
+// When you call the function below, it will get and return an INNER ARRAY
 // containing the cell elements for a given row.
 // Call this function from WITHIN your row elements loop. Then you will, in turn,
 // need to loop over the resulting cell elements. But where should this whole
@@ -21,6 +22,45 @@ function getCellElements (currentRowElement) {
 
 
 // YOUR CODE GOES HERE
+replaceAllButton.addEventListener('click', function(){
+    const findInput = document.getElementById(".find-input");
+    const replaceInput = document.getElementById(".replace-input");
+
+
+
+
+
+for( let sectionIndex = 0; sectionIndex < rowElements.length; sectionIndex += 1){
+    const getCellElements = rowElements[sectionIndex];
+    //console.log('Section ' + sectionIndex);
+    
+    
+    for(let infoIndex = 0; infoIndex < getCellElements.length; infoIndex += 1){
+        const sectionItem = getCellElements[infoIndex];
+        //console.log(infoIndex + ': ' + sectionItem);
+    
+    if(getCellElements.includes(findInput)){
+        
+        getCellElements = document.getElementById(".cell").innerHTML;
+        findInput = document.getElementById(".find-input").innerHTML;
+        replaceInput = document.getElementById(".replace-input").innerHTML;
+        getCellElements.replace(findInput, replaceInput);
+
+    }
+
+    }
+
+} 
+
+})
+
+
+    
+
+
+
+
+
 
 
 // One last thing: dedicate very careful attention to using variables and
